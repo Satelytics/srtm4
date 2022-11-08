@@ -107,8 +107,7 @@ def _download_s3(to_file, from_url):
     import boto3
     import re
     s3 = boto3.client('s3')
-    st='s3://sioprocess/ripp/srtm/srtm_72_22.zip'
-    BUCKET_NAME, OBJECT_NAME = re.match('s3://(.*?)/(.*)', st).groups()[:2]
+    BUCKET_NAME, OBJECT_NAME = re.match('s3://(.*?)/(.*)', from_url).groups()[:2]
     with open(to_file, 'wb') as f:
         s3.download_fileobj(BUCKET_NAME, OBJECT_NAME, f)
     return
