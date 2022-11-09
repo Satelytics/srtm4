@@ -121,7 +121,8 @@ def get_srtm_tile(srtm_tile, out_dir):
             the desired strm tile
         out_dir: directory where to store and extract the srtm tiles
     """
-    output_dir = os.path.abspath(os.path.expanduser(out_dir))
+    #output_dir = os.path.abspath(os.path.expanduser(out_dir))
+    output_dir = '/tmp/srtm'
     try:
         os.makedirs(output_dir)
     except OSError:
