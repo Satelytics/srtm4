@@ -1,3 +1,16 @@
+# Installation on MacOS
+need to install libtiff by using 'brew install libtiff'
+after that, check the libtiff location, they should contain header files and libs such as:
+/opt/homebrew/Cellar/libtiff/4.4.0_1/include/tiffio.h
+/opt/homebrew/Cellar/libtiff/4.4.0_1/lib/libtiff.dylib
+In the Makefile.in file, we have the flags modified to allow the compiler to find the headers
+and the linker to find the libraries. If those are not in the locations indicate below, you need
+to make changes to the Makefile.in so that you can correctly install the srtm4
+CFLAGS = -g -O3 -DNDEBUG -DDONT_USE_TEST_MAIN {cflags} -I/opt/homebrew/opt/libtiff/include
+LDLIBS = -lstdc++ -lz -lm -L/opt/homebrew/opt/libtiff/lib -ltiff {ldflags}
+
+after that, just run python setup.py install
+
 # SRTM4 (Shuttle Radar Topography Mission)
 
 Download and parsing of SRTM4 elevation data.
